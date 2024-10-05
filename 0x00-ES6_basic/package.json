@@ -2,7 +2,6 @@
   "name": "0x00-es6_basic",
   "version": "1.0.0",
   "main": "0-constants.js",
-  "type": "module",
   "directories": {
     "test": "tests"
   },
