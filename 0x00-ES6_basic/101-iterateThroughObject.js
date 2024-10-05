@@ -1,13 +1,14 @@
 export default function iterateThroughObject(reportWithIterator) {
-  let i = 0, string = '';
+  let i = 0;
+  let string = '';
 
-  for (let value of reportWithIterator) {
-    if (i == 0) {
+  for (const value of reportWithIterator) {
+    if (i === 0) {
       string = value;
     } else {
-      string = `${string} | ${value}`
+      string = `${string} | ${value}`;
     }
-    i++;
+    i += 1;
   }
 
   return string;
