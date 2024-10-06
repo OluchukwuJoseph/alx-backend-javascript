@@ -9,7 +9,7 @@ export default async function handleProfileSignup(firstName, lastName, filename)
       .catch((error) => error);
     array.push({ status: 'fulfilled', value: firstPromise });
   } catch (error) {
-    array.push({ status: 'rejected', value: error });
+    array.push({ status: 'rejected', value: error.toString() });
   }
   try {
     const secondPromise = await uploadPhoto(filename)
@@ -17,7 +17,7 @@ export default async function handleProfileSignup(firstName, lastName, filename)
       .catch((error) => error);
     array.push({ status: 'fulfilled', value: secondPromise });
   } catch (error) {
-    array.push({ status: 'rejected', value: error });
+    array.push({ status: 'rejected', value: error.toString() });
   }
 
   return array;
