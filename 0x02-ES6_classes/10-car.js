@@ -1,7 +1,3 @@
-const _brand = Symbol('brand');
-const _motor = Symbol('motor');
-const _color = Symbol('color');
-
 export default class Car {
   constructor(brand, motor, color) {
     this._brand = brand;
@@ -23,6 +19,6 @@ export default class Car {
 
   // eslint-disable-next-line class-methods-use-this
   cloneCar() {
-    return new this.constructor(this[_brand], this[_motor], this[_color]);
+    return new this.constructor();
   }
 }
