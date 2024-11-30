@@ -21,6 +21,8 @@ function calculateNumber(type, a, b) {
       return 'Error';
     }
     return aApprox / bApprox;
+  } else {
+    return 'Error';
   }
 }
 

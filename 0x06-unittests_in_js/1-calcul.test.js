@@ -40,3 +40,8 @@ describe('Test calculateNumber with type DIVIDE', function () {
     assert.equal(calculateNumber('DIVIDE', 2.4, 0), 'Error');
   });
 });
+describe('Test calculateNumber with invalid type', function () {
+  it('Should return Error', function () {
+    assert.equal(calculateNumber('MULTIPLY', 2, 2), 'Error');
+  });
+});

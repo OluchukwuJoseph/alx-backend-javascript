@@ -4,41 +4,44 @@ const { describe, it } = require('mocha');
 
 
 // Test cases for 1-calcus
-describe('calculateNumber', function () {
-  describe('SUM operation', function () {
-    it('should return 6 when inputs are 1.4 and 4.5', function () {
-      expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
-    });
+describe('Test calculateNumber with type ADD', function () {
+  it('4 + 2 should return 6', function () {
+    expect(calculateNumber('ADD', 4, 2)).to.equal(6);
   });
-
-  describe('SUBTRACT operation', function () {
-    it('should return -3 when inputs are 1 and 3.7', function () {
-      expect(calculateNumber('SUBTRACT', 1, 3.7)).to.equal(-3);
-    });
+  it('2.4 + 4.8 should return 7', function () {
+    expect(calculateNumber('ADD', 2.4, 4.8)).to.equal(7);
   });
-
-  describe('DIVIDE operation', function () {
-    it('should return 3.5 when inputs are 6.9 and 1.7', function () {
-      expect(calculateNumber('DIVIDE', 6.9, 1.7)).to.equal(3.5);
-    });
-
-    it('should return "Error" when inputs are 1.4 and 0', function () {
-      expect(calculateNumber('DIVIDE', 1.4, 0)).to.equal('Error');
-    });
+  it('-2.4 + 4.8 should return 3', function () {
+    expect(calculateNumber('ADD', -2.4, 4.8)).to.equal(3);
   });
-
-  // Additional edge cases
-  describe('Edge cases', function () {
-    it('should return 0 when inputs are 0.1 and -0.1 with SUM', function () {
-      expect(calculateNumber('SUM', 0.1, -0.1)).to.equal(0);
-    });
-
-    it('should return -2 when inputs are -1.2 and -1.2 with SUM', function () {
-      expect(calculateNumber('SUM', -1.2, -1.2)).to.equal(-2);
-    });
-
-    it('should throw an error for an invalid operation type', function () {
-      assert.strictEqual(calculateNumber('MULTIPLY', 1.4, 4.5), 'Error');
-    });
+});
+describe('Test calculateNumber with type SUBTRACT', function () {
+  it('4 - 2 should return 2', function () {
+    expect(calculateNumber('SUBTRACT', 4, 2)).to.equal(2);
+  });
+  it('4.8 - 2.4 should return 3', function () {
+    expect(calculateNumber('SUBTRACT', 4.8, 2.4)).to.equal(3);
+  });
+  it('-2.4 - 4.8 should return -7', function () {
+    expect(calculateNumber('SUBTRACT', -2.4, 4.8)).to.equal(-7);
+  });
+});
+describe('Test calculateNumber with type DIVIDE', function () {
+  it('4 / 2 should return 2', function () {
+    expect(calculateNumber('DIVIDE', 4, 2)).to.equal(2);
+  });
+  it('4.8 - 2.4 should return 2.5', function () {
+    expect(calculateNumber('DIVIDE', 4.8, 2.4)).to.equal(2.5);
+  });
+  it('-2.4 / 4.8 should return -0.48', function () {
+    expect(calculateNumber('DIVIDE', -2.4, 4.8)).to.equal(-0.4);
+  });
+  it('2.4 / 0 should return Error', function () {
+    expect(calculateNumber('DIVIDE', 2.4, 0)).to.equal('Error');
+  });
+});
+describe('Test calculateNumber with invalid type', function () {
+  it('Should return Error', function () {
+    expect(calculateNumber('MULTIPLY', 2, 2)).to.equal('Error');
   });
 });
