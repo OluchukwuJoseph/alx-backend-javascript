@@ -1,5 +1,5 @@
-const Utils = {
-  calculateNumber (type, a, b) {
+class Utils {
+  static calculateNumber (type, a, b) {
     const aApprox = Math.round(a);
     const bApprox = Math.round(b);
 
@@ -15,7 +15,7 @@ const Utils = {
     } else {
       return 'Error';
     }
-  },
+  }
 }
 
 module.exports = Utils;
