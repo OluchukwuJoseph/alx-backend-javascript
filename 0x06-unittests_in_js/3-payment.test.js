@@ -5,7 +5,7 @@ const sendPaymentRequestToApi = require('./3-payment');
 const Utils = require('./utils');
 
 
-describe('Test sendPaymentRequestToApi to validate it uses Utils.calculateNumber', function () {
+describe('sendPaymentRequestToApi', function () {
   const mySpy = spy(Utils, "calculateNumber");
 
   it('Check the arguments called with Utils.calculateNumber', function () {

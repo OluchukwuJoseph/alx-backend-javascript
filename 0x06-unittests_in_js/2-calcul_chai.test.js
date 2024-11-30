@@ -4,15 +4,15 @@ const { describe, it } = require('mocha');
 
 
 // Test cases for 1-calcus
-describe('Test calculateNumber with type ADD', function () {
+describe('Test calculateNumber with type SUM', function () {
   it('4 + 2 should return 6', function () {
-    expect(calculateNumber('ADD', 4, 2)).to.equal(6);
+    expect(calculateNumber('SUM', 4, 2)).to.equal(6);
   });
   it('2.4 + 4.8 should return 7', function () {
-    expect(calculateNumber('ADD', 2.4, 4.8)).to.equal(7);
+    expect(calculateNumber('SUM', 2.4, 4.8)).to.equal(7);
   });
   it('-2.4 + 4.8 should return 3', function () {
-    expect(calculateNumber('ADD', -2.4, 4.8)).to.equal(3);
+    expect(calculateNumber('SUM', -2.4, 4.8)).to.equal(3);
   });
 });
 describe('Test calculateNumber with type SUBTRACT', function () {
