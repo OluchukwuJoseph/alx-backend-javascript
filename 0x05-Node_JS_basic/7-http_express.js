@@ -1,25 +1,17 @@
 const express = require('express');
 const countStudents = require('./3-read_file_async');
 
-function captureConsoleLogs(fn) {
-  return new Promise((resolve, reject) => {
-    const originalLog = console.log;
-    const logs = [];
+async function captureConsoleLogs() {
+  const originalLog = console.log;
+  const logs = [];
 
-    console.log = (...args) => {
-      logs.push(args.join(' '));
-    };
+  console.log = (...args) => {
+    logs.push(args.join(' '));
+  };
 
-    fn()
-      .then(() => {
-        console.log = originalLog;
-        resolve(logs);
-      })
-      .catch(err => {
-        console.log = originalLog;
-        reject(err);
-      });
-  });
+  await countStudents('database.csv')
+  console.log = originalLog;
+  return logs;
 }
 
 const app = express();
@@ -30,9 +22,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', async (req, res) => {
-  const capturedLogs = await captureConsoleLogs(() => countStudents('database.csv'));
-  res.send('This is the list of our students');
-  res.send(capturedLogs.join('\n'));
+  const capturedLogs = await captureConsoleLogs();
+  res.write('This is the list of our students\n');
+  res.write(capturedLogs.join('\n'));
+  res.end();
 });
 
 app.listen(PORT, () => {
