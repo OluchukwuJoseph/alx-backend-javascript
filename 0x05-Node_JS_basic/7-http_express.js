@@ -1,6 +1,7 @@
 const express = require('express');
 const countStudents = require('./3-read_file_async');
 const captureConsoleLogs = require('./utils');
+
 const app = express();
 const PORT = 1245;
 
@@ -16,3 +17,5 @@ app.get('/students', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
+
+module.exports = app;
