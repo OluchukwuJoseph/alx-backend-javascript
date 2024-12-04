@@ -1,25 +1,6 @@
 const { createServer } = require('http');
 const countStudents = require('./3-read_file_async');
-
-async function captureConsoleLogs(fn, args) {
-  const logs = [];
-  const originalLog = console.log;
-
-  console.log = (...args) => {
-    logs.push(args.join(''));
-  };
-
-  await fn(args)
-    .then(() => {
-      console.log = originalLog;
-    })
-    .catch((error) => {
-      console.log = originalLog;
-      console.log(`An error occured: ${error}`);
-    });
-
-  return logs;
-}
+const captureConsoleLogs = require('./utils');
 
 const app = createServer(async (req, res) => {
   if (req.url === '/') {
